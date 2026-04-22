@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELITE CONFIG FF</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  color: #00ffcc;
+}
+
+/* VIDEO FUNDO */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* overlay */
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: -1;
+}
+
+/* título */
+h1 {
+  text-align: center;
+  text-shadow: 0 0 15px #00ffcc;
+}
+
+/* subtítulo */
+.sub {
+  text-align: center;
+  color: #fff;
+}
+
+/* cards */
+.card {
+  background: rgba(0,0,0,0.85);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00ffcc;
+}
+
+/* botão */
+.btn {
+  display: block;
+  margin: 10px auto;
+  padding: 12px;
+  width: 80%;
+  text-align: center;
+  background: #00ffcc;
+  color: black;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffcc;
+}
+
+/* inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: black;
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO FUNDO -->
+<iframe id="bgVideo"
+src="https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&mute=1&loop=1&playlist=fvVHGGh2Nqw&controls=0"
+frameborder="0"
+allow="autoplay">
+</iframe>
+
+<div class="overlay"></div>
+
+<h1>🔥 CONFIG PRO FF 🔥</h1>
+
+<!-- REDES -->
+<div style="text-align:center;">
+  <a class="btn" href="https://wa.me/5591985663181?text=Quero melhorar minha sensibilidade no FF 🔥">📱 WhatsApp</a>
+  <a class="btn" href="https://youtube.com/@comboxit100" target="_blank">▶️ YouTube</a>
+  <a class="btn" href="https://www.instagram.com/eraldo._x" target="_blank">📸 Instagram</a>
+</div>
+
+<p class="sub">
+🔥 Mais de <span id="contador">127</span> jogadores já melhoraram hoje  
+⚡ Atendimento rápido | Entrega na hora
+</p>
+
+<!-- SL PRO -->
+<div class="card">
+<h2>SL PRO</h2>
+<p>Aumente sua precisão e domine as partidas 🔥</p>
+<b>R$15</b>
+
+<select>
+<option>Escolha seu celular</option>
+<option>Samsung</option>
+<option>Xiaomi</option>
+<option>Motorola</option>
+<option>iPhone</option>
+</select>
+
+<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO R$15">COMPRAR</a>
+
+<input placeholder="Digite a senha">
+<a class="btn" href="https://wa.me/5591985663181?text=Quero config SL PRO R$5">Pedir senha (R$5)</a>
+</div>
+
+<!-- SL PRO MAX -->
+<div class="card">
+<h2>SL PRO MAX</h2>
+<p>Controle avançado + resposta rápida 🔥</p>
+<b>R$25</b>
+
+<select>
+<option>Escolha seu celular</option>
+<option>Samsung</option>
+<option>Xiaomi</option>
+<option>Motorola</option>
+<option>iPhone</option>
+</select>
+
+<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO MAX R$25">COMPRAR</a>
+
+<input placeholder="Digite a senha">
+<a class="btn" href="https://wa.me/5591985663181?text=Quero config MAX R$5">Pedir senha (R$5)</a>
+</div>
+
+<!-- PREMIUM -->
+<div class="card">
+<h2>PACK PREMIUM</h2>
+<p>DPI perfeita + configuração personalizada 🔥</p>
+<b>R$30</b>
+
+<select>
+<option>Escolha seu celular</option>
+<option>Samsung</option>
+<option>Xiaomi</option>
+<option>Motorola</option>
+<option>iPhone</option>
+</select>
+
+<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar PREMIUM R$30">COMPRAR</a>
+
+<input placeholder="Digite a senha">
+<a class="btn" href="https://wa.me/5591985663181?text=Quero config PREMIUM R$5">Pedir senha (R$5)</a>
+</div>
+
+<!-- AVALIAÇÕES -->
+<div class="card">
+<h2>⭐ Avaliações</h2>
+<p>“Melhorei muito minha mira!”</p>
+<p>“Agora só capa 🔥”</p>
+<p>“Vale muito a pena”</p>
+</div>
+
+<script>
+setInterval(()=>{
+  let c = document.getElementById("contador");
+  c.innerText = parseInt(c.innerText) + Math.floor(Math.random()*2);
+},5000);
+</script>
+
+</body>
+  </html>
