@@ -3,49 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ELITE CONFIG FF</title>
+<title>BOOST APP</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial;
+  background: black;
   color: #00ffcc;
 }
 
-/* VIDEO */
+/* vídeo fundo */
 #bgVideo {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 120%;
-  height: 120%;
+  width: 130%;
+  height: 130%;
   transform: translate(-50%, -50%);
   z-index: -2;
-  filter: brightness(1.2) blur(1px);
+  filter: brightness(1.1) blur(2px);
 }
 
-/* overlay */
-.overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.05);
-  z-index: -1;
-}
-
-/* título */
-h1 {
+/* topo */
+header {
   text-align: center;
-  text-shadow: 0 0 15px #00ffcc;
+  padding: 15px;
+  font-size: 20px;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+/* abas */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0,0,0,0.6);
+  padding: 10px;
+}
+
+.tab {
+  cursor: pointer;
+  color: #00ffcc;
 }
 
 /* cards */
 .card {
-  background: rgba(0,0,0,0.45);
-  margin: 20px;
-  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  margin: 15px;
+  padding: 15px;
   border-radius: 15px;
-  box-shadow: 0 0 20px #00ffcc;
+  box-shadow: 0 0 15px #00ffcc;
 }
 
 /* botão */
@@ -53,167 +60,147 @@ h1 {
   display: block;
   margin: 10px auto;
   padding: 12px;
-  width: 80%;
-  text-align: center;
+  width: 90%;
   background: #00ffcc;
   color: black;
   border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-}
-
-/* botão som bolinha */
-.sound-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  background: #00ffcc;
-  color: black;
-  border-radius: 50%;
   text-align: center;
-  line-height: 55px;
-  font-size: 22px;
   font-weight: bold;
-  box-shadow: 0 0 15px #00ffcc;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-/* inputs */
-input, select {
-  width: 100%;
+/* input */
+input {
+  width: 90%;
   padding: 10px;
   margin-top: 10px;
   background: black;
   border: 1px solid #00ffcc;
   color: #00ffcc;
+  border-radius: 10px;
 }
 
-.sub {
+/* escondido */
+.section { display: none; }
+.active { display: block; }
+
+/* whatsapp */
+.whats {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #00ffcc;
+  color: black;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* som */
+.sound {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00ffcc;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   text-align: center;
-  color: #fff;
+  line-height: 50px;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- VIDEO -->
+<!-- vídeo -->
 <iframe id="bgVideo"
 src="https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&mute=1&loop=1&playlist=fvVHGGh2Nqw&controls=0"
 frameborder="0"
 allow="autoplay">
 </iframe>
 
-<div class="overlay"></div>
+<header>🔥 BOOST GAMER APP 🔥</header>
 
-<h1>🔥 CONFIG PRO FF 🔥</h1>
-
-<div style="text-align:center;">
-  <a class="btn" href="https://wa.me/5591985663181">📱 WhatsApp</a>
-  <a class="btn" href="https://youtube.com/@comboxit100" target="_blank">▶️ YouTube</a>
-  <a class="btn" href="https://www.instagram.com/eraldo._x" target="_blank">📸 Instagram</a>
+<!-- LOGIN -->
+<div id="login" class="card">
+  <h3>🔐 Entrar</h3>
+  <input id="senha" placeholder="Senha">
+  <button class="btn" onclick="login()">ACESSAR</button>
 </div>
 
-<p class="sub">
-🔥 Mais de <span id="contador">127</span> jogadores melhoraram hoje  
-⚡ Resultado rápido | Entrega na hora
-</p>
+<!-- APP -->
+<div id="app" style="display:none;">
 
-<!-- SL PRO -->
-<div class="card">
-<h2>SL PRO</h2>
-<p>Precisão melhorada + movimentação mais leve 🔥</p>
-<b>R$15</b>
+  <div class="tabs">
+    <div class="tab" onclick="show('home')">Home</div>
+    <div class="tab" onclick="show('config')">Configs</div>
+    <div class="tab" onclick="show('contato')">Contato</div>
+  </div>
 
-<select>
-<option>Escolha seu celular</option>
-<option>Samsung</option>
-<option>Xiaomi</option>
-<option>Motorola</option>
-<option>iPhone</option>
-</select>
+  <!-- HOME -->
+  <div id="home" class="section active">
+    <div class="card">
+      <h2>🔥 Bem-vindo</h2>
+      <p>Melhore sua jogabilidade com configs otimizadas 📱</p>
+    </div>
+  </div>
 
-<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO">COMPRAR</a>
+  <!-- CONFIG -->
+  <div id="config" class="section">
+    <div class="card">
+      <h3>SL PRO</h3>
+      <a class="btn" href="https://wa.me/5591985663181">QUERO</a>
+    </div>
 
-<input placeholder="Digite a senha">
-<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha SL PRO">Pedir senha</a>
+    <div class="card">
+      <h3>SL PRO MAX</h3>
+      <a class="btn" href="https://wa.me/5591985663181">QUERO</a>
+    </div>
+
+    <div class="card">
+      <h3>PACK PREMIUM</h3>
+      <p>DPI + otimização para todos dispositivos 📲</p>
+      <a class="btn" href="https://wa.me/5591985663181">QUERO</a>
+    </div>
+  </div>
+
+  <!-- CONTATO -->
+  <div id="contato" class="section">
+    <div class="card">
+      <a class="btn" href="https://youtube.com/@comboxit100">YouTube</a>
+      <a class="btn" href="https://www.instagram.com/eraldo._x">Instagram</a>
+    </div>
+  </div>
+
 </div>
 
-<!-- SL PRO MAX -->
-<div class="card">
-<h2>SL PRO MAX</h2>
-<p>Resposta rápida + controle total da mira 🔥</p>
-<b>R$25</b>
-
-<select>
-<option>Escolha seu celular</option>
-<option>Samsung</option>
-<option>Xiaomi</option>
-<option>Motorola</option>
-<option>iPhone</option>
-</select>
-
-<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO MAX">COMPRAR</a>
-
-<input placeholder="Digite a senha">
-<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha SL PRO MAX">Pedir senha</a>
-</div>
-
-<!-- PACK PREMIUM -->
-<div class="card">
-<h2>🔥 PACK PREMIUM 🔥</h2>
-
-<p style="font-size:15px;">
-📲 Configuração COMPLETA para todos os dispositivos  
-⚡ DPI otimizada + sensibilidade perfeita  
-🎯 Melhor controle, mais precisão e desempenho máximo  
-💎 Ideal para quem quer jogar em nível alto
-</p>
-
-<b style="font-size:20px;">R$30</b>
-
-<select>
-<option>Escolha seu celular</option>
-<option>Samsung</option>
-<option>Xiaomi</option>
-<option>Motorola</option>
-<option>iPhone</option>
-</select>
-
-<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar PACK PREMIUM">COMPRAR</a>
-
-<input placeholder="Digite a senha">
-<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha PREMIUM">Pedir senha</a>
-</div>
-
-<!-- AVALIAÇÕES -->
-<div class="card">
-<h2>⭐ Avaliações</h2>
-<p>🔥 “Minha mira mudou totalmente!”</p>
-<p>🔥 “Agora só capa!”</p>
-<p>🔥 “Vale muito a pena”</p>
-</div>
-
-<!-- BOTÃO SOM -->
-<div class="sound-btn" onclick="ativarSom()">🔊</div>
+<!-- botões flutuantes -->
+<a class="whats" href="https://wa.me/5591985663181">💬</a>
+<div class="sound" onclick="sound()">🔊</div>
 
 <script>
-function ativarSom() {
-  let iframe = document.getElementById("bgVideo");
-  iframe.src = "https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&loop=1&playlist=fvVHGGh2Nqw";
+function login(){
+  let s = document.getElementById("senha").value;
+  if(s === "vip123"){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("app").style.display = "block";
+  } else {
+    alert("Senha errada ❌");
+  }
 }
 
-setInterval(()=>{
-  let c = document.getElementById("contador");
-  c.innerText = parseInt(c.innerText) + Math.floor(Math.random()*2);
-},5000);
+function show(id){
+  document.querySelectorAll(".section").forEach(e=>e.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function sound(){
+  let v = document.getElementById("bgVideo");
+  v.src = "https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&loop=1&playlist=fvVHGGh2Nqw";
+}
 </script>
 
 </body>
