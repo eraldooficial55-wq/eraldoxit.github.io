@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOOST GAMER CENTER</title>
+<title>BOOST SHOP</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial;
-  background: black;
   color: #00ffcc;
+  background: black;
 }
 
 /* vídeo fundo */
@@ -22,7 +22,7 @@ body {
   height: 130%;
   transform: translate(-50%, -50%);
   z-index: -2;
-  filter: brightness(1.1) blur(2px);
+  filter: brightness(0.6) blur(2px);
 }
 
 /* overlay */
@@ -30,56 +30,65 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.3);
   z-index: -1;
 }
 
 /* título */
-h1 {
+header {
   text-align: center;
+  padding: 20px;
+  font-size: 26px;
   text-shadow: 0 0 15px #00ffcc;
 }
 
-/* card */
+/* links topo */
+.top {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.top a {
+  color: #00ffcc;
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+/* container */
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+/* card produto */
 .card {
-  background: rgba(0,0,0,0.6);
-  margin: 15px;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid #00ffcc;
   padding: 15px;
+  margin: 15px 0;
   border-radius: 15px;
   box-shadow: 0 0 15px #00ffcc;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 
 /* botão */
 .btn {
   display: block;
-  margin: 10px auto;
+  margin-top: 10px;
   padding: 12px;
-  width: 90%;
   background: #00ffcc;
   color: black;
-  border-radius: 10px;
   text-align: center;
+  border-radius: 10px;
   font-weight: bold;
   text-decoration: none;
 }
 
-/* som */
-.sound {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #00ffcc;
-  color: black;
-  text-align: center;
-  line-height: 55px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* whatsapp */
+/* whatsapp fixo */
 .whats {
   position: fixed;
   bottom: 20px;
@@ -91,12 +100,26 @@ h1 {
   font-weight: bold;
   text-decoration: none;
 }
+
+/* botão som */
+.sound {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background: #00ffcc;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 55px;
+  cursor: pointer;
+}
 </style>
 </head>
 
 <body>
 
-<!-- vídeo de fundo -->
+<!-- vídeo fundo -->
 <iframe id="bgVideo"
 src="https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&mute=1&loop=1&playlist=fvVHGGh2Nqw&controls=0"
 frameborder="0"
@@ -105,42 +128,44 @@ allow="autoplay">
 
 <div class="overlay"></div>
 
-<h1>🔥 BOOST GAMER CENTER 🔥</h1>
+<header>🔥 BOOST SHOP 🔥</header>
 
-<!-- redes -->
-<div class="card">
-  <a class="btn" href="https://wa.me/5591985663181">WhatsApp</a>
-  <a class="btn" href="https://youtube.com/@comboxit100">YouTube</a>
-  <a class="btn" href="https://www.instagram.com/eraldo._x">Instagram</a>
+<div class="top">
+  <a href="https://wa.me/5591985663181">WhatsApp</a>
+  <a href="https://youtube.com/@comboxit100">YouTube</a>
+  <a href="https://www.instagram.com/eraldo._x">Instagram</a>
 </div>
 
-<!-- configs -->
-<div class="card">
-  <h2>🎯 SL PRO</h2>
-  <p>Melhora sensibilidade e controle de mira</p>
-  <a class="btn" href="https://wa.me/5591985663181">QUERO ESSA</a>
+<div class="container">
+
+  <div class="card">
+    <h2>🎯 SL PRO</h2>
+    <p>Configuração otimizada de sensibilidade</p>
+    <a class="btn" href="https://wa.me/5591985663181?text=Quero%20o%20SL%20PRO">COMPRAR</a>
+  </div>
+
+  <div class="card">
+    <h2>⚡ SL PRO MAX</h2>
+    <p>Mais precisão e controle de mira</p>
+    <a class="btn" href="https://wa.me/5591985663181?text=Quero%20o%20SL%20PRO%20MAX">COMPRAR</a>
+  </div>
+
+  <div class="card">
+    <h2>💎 PACK PREMIUM</h2>
+    <p>DPI + otimização completa para todos dispositivos 📱</p>
+    <a class="btn" href="https://wa.me/5591985663181?text=Quero%20o%20PACK%20PREMIUM">COMPRAR</a>
+  </div>
+
 </div>
 
-<div class="card">
-  <h2>⚡ SL PRO MAX</h2>
-  <p>Resposta rápida + melhor desempenho</p>
-  <a class="btn" href="https://wa.me/5591985663181">QUERO ESSA</a>
-</div>
+<a class="whats" href="https://wa.me/5591985663181">💬 WhatsApp</a>
 
-<div class="card">
-  <h2>💎 PACK PREMIUM</h2>
-  <p>DPI + otimização completa para todos dispositivos 📱</p>
-  <a class="btn" href="https://wa.me/5591985663181">QUERO ESSA</a>
-</div>
-
-<!-- botões fixos -->
-<a class="whats" href="https://wa.me/5591985663181">💬</a>
 <div class="sound" onclick="som()">🔊</div>
 
 <script>
 function som(){
   let v = document.getElementById("bgVideo");
-  v.src = "https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&loop=1&playlist=fvVHGGh2Nqw";
+  v.src = v.src;
 }
 </script>
 
