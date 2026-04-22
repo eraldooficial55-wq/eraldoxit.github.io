@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOOST GAMER APP</title>
+<title>BOOST GAMER CENTER</title>
 
 <style>
 body {
@@ -13,7 +13,7 @@ body {
   color: #00ffcc;
 }
 
-/* vídeo */
+/* vídeo fundo */
 #bgVideo {
   position: fixed;
   top: 50%;
@@ -30,7 +30,7 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.25);
   z-index: -1;
 }
 
@@ -63,19 +63,6 @@ h1 {
   text-decoration: none;
 }
 
-/* input */
-input {
-  width: 90%;
-  padding: 10px;
-  margin-top: 10px;
-  background: black;
-  border: 1px solid #00ffcc;
-  color: #00ffcc;
-}
-
-/* esconder */
-#app { display: none; }
-
 /* som */
 .sound {
   position: fixed;
@@ -89,13 +76,27 @@ input {
   text-align: center;
   line-height: 55px;
   font-size: 20px;
+  cursor: pointer;
+}
+
+/* whatsapp */
+.whats {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #00ffcc;
+  color: black;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- vídeo -->
+<!-- vídeo de fundo -->
 <iframe id="bgVideo"
 src="https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&mute=1&loop=1&playlist=fvVHGGh2Nqw&controls=0"
 frameborder="0"
@@ -104,55 +105,39 @@ allow="autoplay">
 
 <div class="overlay"></div>
 
-<h1>🔥 BOOST GAMER 🔥</h1>
+<h1>🔥 BOOST GAMER CENTER 🔥</h1>
 
-<!-- LOGIN -->
-<div id="login" class="card">
-  <h3>🔐 Digite a senha</h3>
-  <input id="senha" placeholder="Senha">
-  <button class="btn" onclick="login()">ACESSAR</button>
+<!-- redes -->
+<div class="card">
+  <a class="btn" href="https://wa.me/5591985663181">WhatsApp</a>
+  <a class="btn" href="https://youtube.com/@comboxit100">YouTube</a>
+  <a class="btn" href="https://www.instagram.com/eraldo._x">Instagram</a>
 </div>
 
-<!-- APP -->
-<div id="app">
-
-  <div class="card">
-    <h2>📦 SL PRO</h2>
-    <a class="btn" href="https://wa.me/5591985663181">COMPRAR</a>
-  </div>
-
-  <div class="card">
-    <h2>⚡ SL PRO MAX</h2>
-    <a class="btn" href="https://wa.me/5591985663181">COMPRAR</a>
-  </div>
-
-  <div class="card">
-    <h2>💎 PACK PREMIUM</h2>
-    <p>DPI + otimização para todos dispositivos 📲</p>
-    <a class="btn" href="https://wa.me/5591985663181">COMPRAR</a>
-  </div>
-
-  <div class="card">
-    <a class="btn" href="https://youtube.com/@comboxit100">YouTube</a>
-    <a class="btn" href="https://www.instagram.com/eraldo._x">Instagram</a>
-  </div>
-
+<!-- configs -->
+<div class="card">
+  <h2>🎯 SL PRO</h2>
+  <p>Melhora sensibilidade e controle de mira</p>
+  <a class="btn" href="https://wa.me/5591985663181">QUERO ESSA</a>
 </div>
 
+<div class="card">
+  <h2>⚡ SL PRO MAX</h2>
+  <p>Resposta rápida + melhor desempenho</p>
+  <a class="btn" href="https://wa.me/5591985663181">QUERO ESSA</a>
+</div>
+
+<div class="card">
+  <h2>💎 PACK PREMIUM</h2>
+  <p>DPI + otimização completa para todos dispositivos 📱</p>
+  <a class="btn" href="https://wa.me/5591985663181">QUERO ESSA</a>
+</div>
+
+<!-- botões fixos -->
+<a class="whats" href="https://wa.me/5591985663181">💬</a>
 <div class="sound" onclick="som()">🔊</div>
 
 <script>
-function login(){
-  let s = document.getElementById("senha").value;
-
-  if(s === "vip123"){
-    document.getElementById("login").style.display = "none";
-    document.getElementById("app").style.display = "block";
-  } else {
-    alert("Senha errada ❌");
-  }
-}
-
 function som(){
   let v = document.getElementById("bgVideo");
   v.src = "https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&loop=1&playlist=fvVHGGh2Nqw";
