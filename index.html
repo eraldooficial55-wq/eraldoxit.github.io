@@ -12,7 +12,7 @@ body {
   color: #00ffcc;
 }
 
-/* VIDEO FUNDO */
+/* VIDEO */
 #bgVideo {
   position: fixed;
   top: 50%;
@@ -21,11 +21,10 @@ body {
   height: 120%;
   transform: translate(-50%, -50%);
   z-index: -2;
-  pointer-events: none;
   filter: brightness(1.2) blur(1px);
 }
 
-/* overlay leve */
+/* overlay */
 .overlay {
   position: fixed;
   width: 100%;
@@ -40,15 +39,9 @@ h1 {
   text-shadow: 0 0 15px #00ffcc;
 }
 
-/* subtítulo */
-.sub {
-  text-align: center;
-  color: #fff;
-}
-
 /* cards */
 .card {
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.45);
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
@@ -67,6 +60,29 @@ h1 {
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* botão som bolinha */
+.sound-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background: #00ffcc;
+  color: black;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 55px;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 0 15px #00ffcc;
+  cursor: pointer;
 }
 
 /* inputs */
@@ -77,6 +93,11 @@ input, select {
   background: black;
   border: 1px solid #00ffcc;
   color: #00ffcc;
+}
+
+.sub {
+  text-align: center;
+  color: #fff;
 }
 </style>
 </head>
@@ -94,25 +115,21 @@ allow="autoplay">
 
 <h1>🔥 CONFIG PRO FF 🔥</h1>
 
-<!-- BOTÃO SOM -->
-<button class="btn" onclick="ativarSom()">🔊 ATIVAR SOM</button>
-
-<!-- REDES -->
 <div style="text-align:center;">
-  <a class="btn" href="https://wa.me/5591985663181?text=Quero melhorar minha sensibilidade no FF 🔥">📱 WhatsApp</a>
+  <a class="btn" href="https://wa.me/5591985663181">📱 WhatsApp</a>
   <a class="btn" href="https://youtube.com/@comboxit100" target="_blank">▶️ YouTube</a>
   <a class="btn" href="https://www.instagram.com/eraldo._x" target="_blank">📸 Instagram</a>
 </div>
 
 <p class="sub">
-🔥 Mais de <span id="contador">127</span> jogadores já melhoraram hoje  
-⚡ Atendimento rápido | Entrega na hora
+🔥 Mais de <span id="contador">127</span> jogadores melhoraram hoje  
+⚡ Resultado rápido | Entrega na hora
 </p>
 
 <!-- SL PRO -->
 <div class="card">
 <h2>SL PRO</h2>
-<p>Aumente sua precisão e domine as partidas 🔥</p>
+<p>Precisão melhorada + movimentação mais leve 🔥</p>
 <b>R$15</b>
 
 <select>
@@ -123,16 +140,16 @@ allow="autoplay">
 <option>iPhone</option>
 </select>
 
-<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO R$15">COMPRAR</a>
+<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO">COMPRAR</a>
 
 <input placeholder="Digite a senha">
-<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha da config SL PRO">Pedir senha</a>
+<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha SL PRO">Pedir senha</a>
 </div>
 
 <!-- SL PRO MAX -->
 <div class="card">
 <h2>SL PRO MAX</h2>
-<p>Controle avançado + resposta rápida 🔥</p>
+<p>Resposta rápida + controle total da mira 🔥</p>
 <b>R$25</b>
 
 <select>
@@ -143,17 +160,24 @@ allow="autoplay">
 <option>iPhone</option>
 </select>
 
-<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO MAX R$25">COMPRAR</a>
+<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar SL PRO MAX">COMPRAR</a>
 
 <input placeholder="Digite a senha">
-<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha da config SL PRO MAX">Pedir senha</a>
+<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha SL PRO MAX">Pedir senha</a>
 </div>
 
-<!-- PREMIUM -->
+<!-- PACK PREMIUM -->
 <div class="card">
-<h2>PACK PREMIUM</h2>
-<p>DPI perfeita + configuração personalizada 🔥</p>
-<b>R$30</b>
+<h2>🔥 PACK PREMIUM 🔥</h2>
+
+<p style="font-size:15px;">
+📲 Configuração COMPLETA para todos os dispositivos  
+⚡ DPI otimizada + sensibilidade perfeita  
+🎯 Melhor controle, mais precisão e desempenho máximo  
+💎 Ideal para quem quer jogar em nível alto
+</p>
+
+<b style="font-size:20px;">R$30</b>
 
 <select>
 <option>Escolha seu celular</option>
@@ -163,19 +187,22 @@ allow="autoplay">
 <option>iPhone</option>
 </select>
 
-<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar PREMIUM R$30">COMPRAR</a>
+<a class="btn" href="https://wa.me/5591985663181?text=Quero comprar PACK PREMIUM">COMPRAR</a>
 
 <input placeholder="Digite a senha">
-<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha da config PREMIUM">Pedir senha</a>
+<a class="btn" href="https://wa.me/5591985663181?text=Quero a senha PREMIUM">Pedir senha</a>
 </div>
 
 <!-- AVALIAÇÕES -->
 <div class="card">
 <h2>⭐ Avaliações</h2>
-<p>“Melhorei muito minha mira!”</p>
-<p>“Agora só capa 🔥”</p>
-<p>“Vale muito a pena”</p>
+<p>🔥 “Minha mira mudou totalmente!”</p>
+<p>🔥 “Agora só capa!”</p>
+<p>🔥 “Vale muito a pena”</p>
 </div>
+
+<!-- BOTÃO SOM -->
+<div class="sound-btn" onclick="ativarSom()">🔊</div>
 
 <script>
 function ativarSom() {
