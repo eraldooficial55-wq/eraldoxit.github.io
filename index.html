@@ -1,171 +1,83 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOOST SHOP</title>
+<title>Color Pro Ultra</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  color: #00ffcc;
   background: black;
+  color: white;
+  font-family: Arial;
+  text-align: center;
 }
 
-/* vídeo fundo */
-#bgVideo {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 130%;
-  height: 130%;
-  transform: translate(-50%, -50%);
-  z-index: -2;
-  filter: brightness(0.6) blur(2px);
+.container {
+  padding: 20px;
 }
 
-/* overlay */
-.overlay {
+button {
+  padding: 15px;
+  margin: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #00ffcc;
+  font-weight: bold;
+  width: 85%;
+}
+
+input {
+  width: 80%;
+}
+
+#overlay {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
-  z-index: -1;
-}
-
-/* título */
-header {
-  text-align: center;
-  padding: 20px;
-  font-size: 26px;
-  text-shadow: 0 0 15px #00ffcc;
-}
-
-/* links topo */
-.top {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.top a {
-  color: #00ffcc;
-  margin: 0 8px;
-  text-decoration: none;
-}
-
-/* container */
-.container {
-  width: 90%;
-  margin: auto;
-}
-
-/* card produto */
-.card {
-  background: rgba(0,0,0,0.7);
-  border: 1px solid #00ffcc;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 15px;
-  box-shadow: 0 0 15px #00ffcc;
-  transition: 0.2s;
-}
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-/* botão */
-.btn {
-  display: block;
-  margin-top: 10px;
-  padding: 12px;
-  background: #00ffcc;
-  color: black;
-  text-align: center;
-  border-radius: 10px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* whatsapp fixo */
-.whats {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #00ffcc;
-  color: black;
-  padding: 12px;
-  border-radius: 20px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* botão som */
-.sound {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  background: #00ffcc;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 55px;
-  cursor: pointer;
+  pointer-events: none;
+  display: none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- vídeo fundo -->
-<iframe id="bgVideo"
-src="https://www.youtube.com/embed/fvVHGGh2Nqw?autoplay=1&mute=1&loop=1&playlist=fvVHGGh2Nqw&controls=0"
-frameborder="0"
-allow="autoplay">
-</iframe>
-
-<div class="overlay"></div>
-
-<header>🔥 BOOST SHOP 🔥</header>
-
-<div class="top">
-  <a href="https://wa.me/5591985663181">WhatsApp</a>
-  <a href="https://youtube.com/@comboxit100">YouTube</a>
-  <a href="https://www.instagram.com/eraldo._x">Instagram</a>
-</div>
-
 <div class="container">
+  <h1>🔥 Color Pro Ultra</h1>
 
-  <div class="card">
-    <h2>🎯 SL PRO</h2>
-    <p>Configuração otimizada de sensibilidade</p>
-    <a class="btn" href="https://wa.me/5591985663181?text=Quero%20o%20SL%20PRO">COMPRAR</a>
-  </div>
+  <p>🌈 Saturação</p>
+  <input type="range" min="100" max="300" value="160" id="sat">
 
-  <div class="card">
-    <h2>⚡ SL PRO MAX</h2>
-    <p>Mais precisão e controle de mira</p>
-    <a class="btn" href="https://wa.me/5591985663181?text=Quero%20o%20SL%20PRO%20MAX">COMPRAR</a>
-  </div>
+  <p>✨ Brilho</p>
+  <input type="range" min="100" max="200" value="120" id="bright">
 
-  <div class="card">
-    <h2>💎 PACK PREMIUM</h2>
-    <p>DPI + otimização completa para todos dispositivos 📱</p>
-    <a class="btn" href="https://wa.me/5591985663181?text=Quero%20o%20PACK%20PREMIUM">COMPRAR</a>
-  </div>
+  <p>⚡ Contraste</p>
+  <input type="range" min="100" max="300" value="180" id="cont">
 
+  <button onclick="ativar()">🚀 Ativar Ultra Cor</button>
+  <button onclick="desativar()">❌ Desativar</button>
 </div>
 
-<a class="whats" href="https://wa.me/5591985663181">💬 WhatsApp</a>
-
-<div class="sound" onclick="som()">🔊</div>
+<div id="overlay"></div>
 
 <script>
-function som(){
-  let v = document.getElementById("bgVideo");
-  v.src = v.src;
+function ativar() {
+  let s = document.getElementById("sat").value;
+  let b = document.getElementById("bright").value;
+  let c = document.getElementById("cont").value;
+
+  let overlay = document.getElementById("overlay");
+  overlay.style.display = "block";
+  overlay.style.backdropFilter = 
+    `saturate(${s}%) brightness(${b}%) contrast(${c}%)`;
+}
+
+function desativar() {
+  document.getElementById("overlay").style.display = "none";
 }
 </script>
 
