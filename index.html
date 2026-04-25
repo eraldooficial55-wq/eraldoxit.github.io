@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Color Pro Ultra</title>
+<title>Game Boost Real</title>
 
 <style>
 body {
-  margin: 0;
-  background: black;
-  color: white;
+  background: #000;
+  color: #00ffcc;
   font-family: Arial;
   text-align: center;
 }
@@ -19,27 +18,21 @@ body {
 }
 
 button {
-  padding: 15px;
+  width: 90%;
+  padding: 16px;
   margin: 10px;
   border: none;
   border-radius: 12px;
   background: #00ffcc;
+  color: black;
   font-weight: bold;
-  width: 85%;
 }
 
-input {
-  width: 80%;
-}
-
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  display: none;
+.card {
+  background: #111;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 12px;
 }
 </style>
 </head>
@@ -47,37 +40,59 @@ input {
 <body>
 
 <div class="container">
-  <h1>🔥 Color Pro Ultra</h1>
+  <h1>🚀 GAME BOOST REAL</h1>
 
-  <p>🌈 Saturação</p>
-  <input type="range" min="100" max="300" value="160" id="sat">
+  <div class="card">
+    <button onclick="boost()">🔥 ATIVAR BOOST</button>
+  </div>
 
-  <p>✨ Brilho</p>
-  <input type="range" min="100" max="200" value="120" id="bright">
+  <div class="card">
+    <button onclick="limpar()">🧹 LIMPEZA TOTAL</button>
+  </div>
 
-  <p>⚡ Contraste</p>
-  <input type="range" min="100" max="300" value="180" id="cont">
+  <div class="card">
+    <button onclick="config()">⚙️ CONFIG IDEAL</button>
+  </div>
 
-  <button onclick="ativar()">🚀 Ativar Ultra Cor</button>
-  <button onclick="desativar()">❌ Desativar</button>
+  <div class="card">
+    <button onclick="abrir()">🎮 ABRIR FREE FIRE</button>
+  </div>
+
 </div>
 
-<div id="overlay"></div>
-
 <script>
-function ativar() {
-  let s = document.getElementById("sat").value;
-  let b = document.getElementById("bright").value;
-  let c = document.getElementById("cont").value;
-
-  let overlay = document.getElementById("overlay");
-  overlay.style.display = "block";
-  overlay.style.backdropFilter = 
-    `saturate(${s}%) brightness(${b}%) contrast(${c}%)`;
+function boost(){
+  alert(
+  "MODO BOOST ATIVADO:\n\n" +
+  "1. Feche todos apps\n" +
+  "2. Ative modo desempenho\n" +
+  "3. Ative modo avião + Wi-Fi\n" +
+  "4. Tire a capinha\n\n" +
+  "Agora o celular vai rodar mais liso!"
+  );
 }
 
-function desativar() {
-  document.getElementById("overlay").style.display = "none";
+function limpar(){
+  alert(
+  "LIMPEZA TOTAL:\n\n" +
+  "Abra apps recentes\n" +
+  "Clique em LIMPAR TUDO\n\n" +
+  "Agora só o jogo vai rodar!"
+  );
+}
+
+function config(){
+  alert(
+  "CONFIG FREE FIRE:\n\n" +
+  "Gráfico: SUAVE\n" +
+  "FPS: ALTO\n" +
+  "Sombra: OFF\n\n" +
+  "Melhor desempenho possível!"
+  );
+}
+
+function abrir(){
+  alert("Abra o Free Fire agora!");
 }
 </script>
 
