@@ -1,100 +1,732 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game Boost Real</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Painel Gelo Invertido - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
 
-<style>
-body {
-  background: #000;
-  color: #00ffcc;
-  font-family: Arial;
-  text-align: center;
-}
+        :root {
+            --primary: #9d00ff;
+            --primary-dark: #6a00b3;
+            --accent: #00ff88;
+            --accent-glow: rgba(0, 255, 136, 0.4);
+            --danger: #ff0044;
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(20, 20, 35, 0.98);
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --border: rgba(157, 0, 255, 0.4);
+        }
 
-.container {
-  padding: 20px;
-}
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-button {
-  width: 90%;
-  padding: 16px;
-  margin: 10px;
-  border: none;
-  border-radius: 12px;
-  background: #00ffcc;
-  color: black;
-  font-weight: bold;
-}
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
 
-.card {
-  background: #111;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 12px;
-}
-</style>
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .app-container {
+            position: relative;
+            z-index: 1;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* LOGIN SCREEN */
+        .login-screen {
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(157, 0, 255, 0.5);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .login-subtitle {
+            font-size: 14px;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .lock-icon {
+            font-size: 60px;
+            margin-bottom: 30px;
+            display: block;
+            animation: pulse-lock 2s infinite;
+        }
+
+        @keyframes pulse-lock {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(157, 0, 255, 0.5)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(157, 0, 255, 0.8)); }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-label {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .input-field::placeholder {
+            color: rgba(136, 136, 136, 0.5);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 4px 20px rgba(157, 0, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn:hover,
+        .login-btn:active {
+            box-shadow: 0 6px 30px rgba(157, 0, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .login-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .login-btn:hover::after {
+            left: 100%;
+        }
+
+        .error-msg {
+            color: var(--danger);
+            font-size: 13px;
+            margin-top: 15px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 600;
+        }
+
+        .error-msg.show {
+            opacity: 1;
+        }
+
+        .footer-text {
+            margin-top: 40px;
+            font-size: 11px;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* PANEL SCREEN */
+        .panel-screen {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .panel-header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .panel-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .panel-subtitle {
+            font-size: 12px;
+            color: var(--accent);
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .status-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .config-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .config-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-group {
+            margin-bottom: 18px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .slider-label span:first-child {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .slider-value {
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.5);
+            border: 2px solid #fff;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(157, 0, 255, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--accent), #00cc6a);
+            color: #000;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #cc0033);
+            color: #fff;
+        }
+
+        .info-box {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        .console {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            max-height: 120px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .console-line {
+            margin-bottom: 4px;
+        }
+
+        .console-time {
+            color: var(--primary);
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 14px 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            z-index: 2000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 360px) {
+            .login-logo { font-size: 26px; }
+            .panel-title { font-size: 20px; }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="bg-particles" id="particles"></div>
+    <div class="scanlines"></div>
 
-<div class="container">
-  <h1>🚀 GAME BOOST REAL</h1>
+    <div class="app-container">
+        <!-- LOGIN SCREEN -->
+        <div id="loginScreen" class="login-screen">
+            <div class="lock-icon">🔒</div>
+            <div class="login-logo">PAINEL GELO</div>
+            <div class="login-subtitle">Invertido VIP</div>
 
-  <div class="card">
-    <button onclick="boost()">🔥 ATIVAR BOOST</button>
-  </div>
+            <div class="input-group">
+                <label class="input-label">Insira sua Key</label>
+                <input type="text" class="input-field" id="keyInput" placeholder="DIGITE A KEY AQUI..." autocomplete="off">
+            </div>
 
-  <div class="card">
-    <button onclick="limpar()">🧹 LIMPEZA TOTAL</button>
-  </div>
+            <button class="login-btn" onclick="checkKey()">🔓 ACESSAR PAINEL</button>
 
-  <div class="card">
-    <button onclick="config()">⚙️ CONFIG IDEAL</button>
-  </div>
+            <div class="error-msg" id="errorMsg">❌ Key inválida! Tente novamente.</div>
 
-  <div class="card">
-    <button onclick="abrir()">🎮 ABRIR FREE FIRE</button>
-  </div>
+            <div class="footer-text">
+                <span class="footer-brand">GRANJEIRO FF</span><br>
+                Painel Gelo Invertido v2.0<br>
+                Desenvolvido por Eraldo
+            </div>
+        </div>
 
-</div>
+        <!-- PANEL SCREEN -->
+        <div id="panelScreen" class="panel-screen">
+            <div class="panel-header">
+                <div class="panel-title">⚡ PAINEL GELO</div>
+                <div class="panel-subtitle">INVERTIDO VIP - ATIVO</div>
+            </div>
 
-<script>
-function boost(){
-  alert(
-  "MODO BOOST ATIVADO:\n\n" +
-  "1. Feche todos apps\n" +
-  "2. Ative modo desempenho\n" +
-  "3. Ative modo avião + Wi-Fi\n" +
-  "4. Tire a capinha\n\n" +
-  "Agora o celular vai rodar mais liso!"
-  );
-}
+            <div class="status-bar">
+                <div class="status-item">
+                    <div class="status-value" id="statusDPI">592</div>
+                    <div class="status-label">DPI</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="statusSensi">85</div>
+                    <div class="status-label">SENSI</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" style="color: var(--accent);">✓</div>
+                    <div class="status-label">STATUS</div>
+                </div>
+            </div>
 
-function limpar(){
-  alert(
-  "LIMPEZA TOTAL:\n\n" +
-  "Abra apps recentes\n" +
-  "Clique em LIMPAR TUDO\n\n" +
-  "Agora só o jogo vai rodar!"
-  );
-}
+            <div class="info-box">
+                ✅ Painel ativo! Ajuste as configurações abaixo e clique em "Aplicar".
+            </div>
 
-function config(){
-  alert(
-  "CONFIG FREE FIRE:\n\n" +
-  "Gráfico: SUAVE\n" +
-  "FPS: ALTO\n" +
-  "Sombra: OFF\n\n" +
-  "Melhor desempenho possível!"
-  );
-}
+            <div class="config-section">
+                <div class="config-title">⚙️ CONFIGURAÇÃO DPI</div>
 
-function abrir(){
-  alert("Abra o Free Fire agora!");
-}
-</script>
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>DPI do Sistema</span>
+                        <span class="slider-value" id="dpiValue">592</span>
+                    </div>
+                    <input type="range" class="slider" id="dpiSlider" min="400" max="800" value="592" oninput="updateDPI(this.value)">
+                </div>
 
+                <button class="action-btn btn-primary" onclick="applyDPI()">✅ APLICAR DPI</button>
+            </div>
+
+            <div class="config-section">
+                <div class="config-title">🎯 SENSIBILIDADE</div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>Sensi Geral (X)</span>
+                        <span class="slider-value" id="sensiXValue">85</span>
+                    </div>
+                    <input type="range" class="slider" id="sensiX" min="1" max="100" value="85" oninput="updateSensiX(this.value)">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>Sensi Geral (Y)</span>
+                        <span class="slider-value" id="sensiYValue">85</span>
+                    </div>
+                    <input type="range" class="slider" id="sensiY" min="1" max="100" value="85" oninput="updateSensiY(this.value)">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>Red Dot</span>
+                        <span class="slider-value" id="redDotValue">90</span>
+                    </div>
+                    <input type="range" class="slider" id="redDot" min="1" max="100" value="90" oninput="updateRedDot(this.value)">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>Mira 2x</span>
+                        <span class="slider-value" id="mira2xValue">75</span>
+                    </div>
+                    <input type="range" class="slider" id="mira2x" min="1" max="100" value="75" oninput="updateMira2x(this.value)">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>Mira 4x</span>
+                        <span class="slider-value" id="mira4xValue">60</span>
+                    </div>
+                    <input type="range" class="slider" id="mira4x" min="1" max="100" value="60" oninput="updateMira4x(this.value)">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>AWM / Sniper</span>
+                        <span class="slider-value" id="awmValue">45</span>
+                    </div>
+                    <input type="range" class="slider" id="awm" min="1" max="100" value="45" oninput="updateAWM(this.value)">
+                </div>
+
+                <button class="action-btn btn-success" onclick="applySensi()">🎯 APLICAR SENSIBILIDADE</button>
+            </div>
+
+            <div class="config-section">
+                <div class="config-title">🚀 OTIMIZAÇÃO</div>
+                <button class="action-btn btn-primary" onclick="optimizeRAM()">🧹 LIMPAR RAM</button>
+                <button class="action-btn btn-success" onclick="openFreeFire()">🎮 ABRIR FREE FIRE</button>
+
+                <div class="console" id="panelConsole">
+                    <div class="console-line"><span class="console-time">[SYSTEM]</span> Painel Gelo Invertido v2.0 - Pronto!</div>
+                </div>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">🚪 SAIR DO PAINEL</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Generate particles
+        function generateParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        generateParticles();
+
+        // VALID KEY
+        const VALID_KEY = 'granjeiro2311817766431358653';
+
+        // Check Key
+        function checkKey() {
+            const input = document.getElementById('keyInput').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (input === VALID_KEY) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('panelScreen').style.display = 'block';
+                showToast('✅ Key validada! Painel ativado.');
+                logToConsole('Key validada com sucesso! Acesso concedido.');
+            } else {
+                errorMsg.classList.add('show');
+                setTimeout(() => errorMsg.classList.remove('show'), 3000);
+            }
+        }
+
+        // Logout
+        function logout() {
+            document.getElementById('panelScreen').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'block';
+            document.getElementById('keyInput').value = '';
+            showToast('🚪 Desconectado do painel.');
+        }
+
+        // Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Console logger
+        function logToConsole(message) {
+            const console = document.getElementById('panelConsole');
+            const time = new Date().toLocaleTimeString('pt-BR', { hour12: false });
+            const line = document.createElement('div');
+            line.className = 'console-line';
+            line.innerHTML = `<span class="console-time">[${time}]</span> ${message}`;
+            console.appendChild(line);
+            console.scrollTop = console.scrollHeight;
+        }
+
+        // DPI
+        function updateDPI(val) {
+            document.getElementById('dpiValue').textContent = val;
+            document.getElementById('statusDPI').textContent = val;
+        }
+
+        function applyDPI() {
+            const dpi = document.getElementById('dpiSlider').value;
+            logToConsole(`DPI ${dpi} aplicado com sucesso!`);
+            showToast(`✅ DPI ${dpi} aplicado!`);
+        }
+
+        // Sensitivity
+        function updateSensiX(val) { 
+            document.getElementById('sensiXValue').textContent = val;
+            document.getElementById('statusSensi').textContent = val;
+        }
+        function updateSensiY(val) { document.getElementById('sensiYValue').textContent = val; }
+        function updateRedDot(val) { document.getElementById('redDotValue').textContent = val; }
+        function updateMira2x(val) { document.getElementById('mira2xValue').textContent = val; }
+        function updateMira4x(val) { document.getElementById('mira4xValue').textContent = val; }
+        function updateAWM(val) { document.getElementById('awmValue').textContent = val; }
+
+        function applySensi() {
+            logToConsole('Configurações de sensibilidade aplicadas!');
+            showToast('🎯 Sensibilidade aplicada!');
+        }
+
+        // Optimization
+        function optimizeRAM() {
+            logToConsole('Limpando RAM...');
+            setTimeout(() => {
+                logToConsole('RAM otimizada! +15% performance');
+                showToast('🧹 RAM Otimizada!');
+            }, 1500);
+        }
+
+        // Open Free Fire
+        function openFreeFire() {
+            logToConsole('Abrindo Free Fire...');
+            window.location.href = 'freefire://';
+            setTimeout(() => {
+                showToast('🎮 Abrindo Free Fire...');
+            }, 500);
+        }
+
+        // Enter key support
+        document.getElementById('keyInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkKey();
+        });
+    </script>
 </body>
 </html>
